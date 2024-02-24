@@ -5,6 +5,8 @@ const { LoginPage } = require('../pageObjects/login.page');
 import dotenv from 'dotenv';
 dotenv.config();
 
+test.use({ storageState: { cookies: [], origins: [] } });
+
 test.beforeEach(async ({ page }) => {
   const menuPage = new MenuPage(page);
   const loginPage = new LoginPage(page);
