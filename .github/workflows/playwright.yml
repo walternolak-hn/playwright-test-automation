@@ -1,11 +1,15 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master ]
+    branches: [ master ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ master ]
 jobs:
   test:
+    env:
+      EMAIL: ${{vars.EMAIL}}
+      VALID_PASSWORD: ${{vars.VALID_PASSWORD}}
+      INVALID_PASSWORD: ${{vars.INVALID_PASSWORD}}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
