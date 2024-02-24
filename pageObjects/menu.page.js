@@ -8,6 +8,7 @@ exports.MenuPage = class MenuPage {
   constructor(page) {
     this.page = page;
     this.loginButton = page.getByText('log in');
+    this.logoutButton = page.getByText('LOG OUT');
     this.usernameLabel = page.getByText('walternolak');
   }
 
