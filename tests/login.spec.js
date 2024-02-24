@@ -20,13 +20,13 @@ test('can login with valid credentials', async ({ page }) => {
   const loginPage = new LoginPage(page);
   const menuPage = new MenuPage(page);
   
-  await loginPage.doLogin(process.env.EMAIL, process.env.VALIDPASSWORD)
+  await loginPage.doLogin(process.env.EMAIL, process.env.VALID_PASSWORD)
   await expect(menuPage.usernameLabel).toBeVisible();
 });
 
 test('cannot login with invalid credentials', async ({ page }) => {
   const loginPage = new LoginPage(page);
   
-  await loginPage.doLogin(process.env.EMAIL, process.env.INVALIDPASSWORD)
+  await loginPage.doLogin(process.env.EMAIL, process.env.INVALID_PASSWORD)
   await expect(loginPage.invalidLoginMessage).toBeVisible();
 });
