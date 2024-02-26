@@ -2,8 +2,6 @@
 const { test, expect } = require('@playwright/test');
 const { HomePage } = require('../pageObjects/home.page');
 const { PlayerPage } = require('../pageObjects/player.page');
-import dotenv from 'dotenv';
-dotenv.config();
 
 test.beforeEach('Land into Homepage', async ({ page }) => {
   const homePage = new HomePage(page);

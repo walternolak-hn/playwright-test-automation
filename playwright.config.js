@@ -12,6 +12,7 @@ const { defineConfig, devices } = require('@playwright/test');
  */
 module.exports = defineConfig({
   testDir: './tests',
+  timeout: 90000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -42,17 +43,17 @@ module.exports = defineConfig({
       dependencies: ['setup'],
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'], storageState: 'playwright/.auth/user.json', },
-    //   dependencies: ['setup'],
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'], storageState: 'playwright/.auth/user.json', },
+      dependencies: ['setup'],
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'], storageState: 'playwright/.auth/user.json', },
-    //   dependencies: ['setup'],
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'], storageState: 'playwright/.auth/user.json', },
+      dependencies: ['setup'],
+    },
 
     /* Test against mobile viewports. */
     // {
