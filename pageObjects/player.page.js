@@ -12,6 +12,9 @@ exports.PlayerPage = class PlayerPage {
     this.volumeSlider = page.getByRole('slider');
     this.soundQualitySwitch = page.locator('.quality-switch');
     this.meterKbpsReadout = page.locator('.meter > .readout');
+    this.nextSongButton = page.locator('.next-button');
+    this.previousSongButton = page.locator('.prev-button');
+    this.trackTitle = page.locator('.track-title');
   }
 
   async goto() {
@@ -57,5 +60,9 @@ exports.PlayerPage = class PlayerPage {
       parsedLastValue = parseInt(lastValue);
       expect(parsedLastValue).toBeGreaterThan(parsedInitialValue);
     }
+  }
+  async verifyPlayerIsPlayingASong(time) {
+    await expect(this.playerPlayPauseButton).toHaveClass(/pause/);
+    await expect(this.playerLeftTimeIndicator).toHaveText(time, { timeout: 10000 });
   }
 };
