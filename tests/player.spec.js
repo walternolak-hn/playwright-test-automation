@@ -7,9 +7,7 @@ test.beforeEach('Land into Homepage', async ({ page }) => {
   const homePage = new HomePage(page);
 
   await homePage.goto();
-  await expect(homePage.nyaNewsWelcomeMessage).toBeVisible();
-  await (homePage.nyaNewsWelcomeNoThanksButton).click();
-  await expect(homePage.nyaNewsWelcomeMessage).not.toBeVisible();
+  await homePage.skipWelcomeMessage();
 });
 
 test('can play a song for 5 seconds', async ({ page }) => {

@@ -14,4 +14,9 @@ exports.HomePage = class HomePage {
   async goto() {
     await this.page.goto('/welcome');
   }
+  async skipWelcomeMessage() {
+    await expect(this.nyaNewsWelcomeMessage).toBeVisible();
+    await (this.nyaNewsWelcomeNoThanksButton).click();
+    await expect(this.nyaNewsWelcomeMessage).not.toBeVisible();
+  }
 };

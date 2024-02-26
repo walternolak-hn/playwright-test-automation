@@ -10,9 +10,7 @@ test.beforeEach('Land into the album page', async ({ page }) => {
   const playerPage = new PlayerPage(page);
 
   await homePage.goto();
-  await expect(homePage.nyaNewsWelcomeMessage).toBeVisible();
-  await (homePage.nyaNewsWelcomeNoThanksButton).click();
-  await expect(homePage.nyaNewsWelcomeMessage).not.toBeVisible();
+  await homePage.skipWelcomeMessage();
 
   await albumPage.goto();
   await expect(page).toHaveURL(/.*id=A_031/);
