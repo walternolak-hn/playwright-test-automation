@@ -7,8 +7,13 @@ exports.HomePage = class HomePage {
    */
   constructor(page) {
     this.page = page;
-    this.nyaNewsWelcomeMessage = page.getByText('Would you like to be added to');
-    this.nyaNewsWelcomeNoThanksButton = page.getByRole('button', { name: 'NO, THANKS' });
+  }
+
+  get nyaNewsWelcomeMessage(){
+    return this.page.getByText('Would you like to be added to');
+  }
+  get nyaNewsWelcomeNoThanksButton(){
+    return this.page.getByRole('button', { name: 'NO, THANKS' });
   }
 
   async goto() {

@@ -7,8 +7,13 @@ exports.AlbumPage = class AlbumPage {
    */
   constructor(page) {
     this.page = page;
-    this.songsTitle = page.getByText('songs');
-    this.songsList = page.getByRole('listitem');
+  }
+
+  get songsTitle(){
+    return this.page.getByText('songs');
+  }
+  get songsList(){
+    return this.page.getByRole('listitem');
   }
 
   async goto() {

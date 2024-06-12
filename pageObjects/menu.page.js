@@ -7,9 +7,16 @@ exports.MenuPage = class MenuPage {
    */
   constructor(page) {
     this.page = page;
-    this.loginButton = page.getByText('log in');
-    this.logoutButton = page.getByText('LOG OUT');
-    this.usernameLabel = page.getByText('walternolak');
+  }
+
+  get loginButton(){
+    return this.page.getByText('log in');
+  }
+  get logoutButton(){
+    return this.page.getByText('LOG OUT');
+  }
+  get usernameLabel(){
+    return this.page.getByText('walternolak');
   }
 
   async goto() {
