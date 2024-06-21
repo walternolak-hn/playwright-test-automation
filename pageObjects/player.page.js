@@ -1,6 +1,6 @@
-const { expect } = require('@playwright/test');
+import { expect } from '@playwright/test';
 
-exports.PlayerPage = class PlayerPage {
+export class PlayerPage {
 
   /**
    * @param {import('@playwright/test').Page} page
@@ -82,4 +82,4 @@ exports.PlayerPage = class PlayerPage {
     await expect(this.playerPlayPauseButton).toHaveClass(/pause/);
     await expect(this.playerLeftTimeIndicator).toHaveText(time, { timeout: 10000 });
   }
-};
+}

@@ -1,6 +1,6 @@
-const { expect } = require('@playwright/test');
+import { expect } from '@playwright/test';
 
-exports.MenuPage = class MenuPage {
+export class MenuPage {
 
   /**
    * @param {import('@playwright/test').Page} page
@@ -22,4 +22,4 @@ exports.MenuPage = class MenuPage {
   async goto() {
     await this.page.goto('/menu');
   }
-};
+}

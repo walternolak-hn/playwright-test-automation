@@ -1,7 +1,6 @@
-// @ts-check
-const { test, expect } = require('@playwright/test');
-const { MenuPage } = require('../pageObjects/menu.page');
-const { LoginPage } = require('../pageObjects/login.page');
+import { test, expect } from '@playwright/test';
+import { MenuPage } from '../pageObjects/menu.page';
+import { LoginPage } from '../pageObjects/login.page';
 import dotenv from 'dotenv';
 dotenv.config();
 

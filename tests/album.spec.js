@@ -1,8 +1,8 @@
 // @ts-check
-const { test, expect } = require('@playwright/test');
-const { HomePage } = require('../pageObjects/home.page');
-const { PlayerPage } = require('../pageObjects/player.page');
-const { AlbumPage } = require('../pageObjects/album.page');
+import { test, expect } from '@playwright/test';
+import { HomePage } from '../pageObjects/home.page';
+import { PlayerPage } from '../pageObjects/player.page';
+import { AlbumPage } from '../pageObjects/album.page';
 
 test.beforeEach('Land into the album page', async ({ page }) => {
   const albumPage = new AlbumPage(page);
