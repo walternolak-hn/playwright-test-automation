@@ -1,20 +1,37 @@
-const { expect } = require('@playwright/test');
+import { expect } from '@playwright/test';
 
-exports.PlayerPage = class PlayerPage {
+export class PlayerPage {
 
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
     this.page = page;
-    this.playerPlayPauseButton = page.locator('.play-pause-button');
-    this.playerLeftTimeIndicator = page.locator('.time-indicators > .left');
-    this.volumeSlider = page.getByRole('slider');
-    this.soundQualitySwitch = page.locator('.quality-switch');
-    this.meterKbpsReadout = page.locator('.meter > .readout');
-    this.nextSongButton = page.locator('.next-button');
-    this.previousSongButton = page.locator('.prev-button');
-    this.trackTitle = page.locator('.track-title');
+  }
+
+  get playerPlayPauseButton(){
+    return this.page.locator('.play-pause-button');
+  }
+  get playerLeftTimeIndicator(){
+    return this.page.locator('.time-indicators > .left');
+  }
+  get volumeSlider(){
+    return this.page.getByRole('slider');
+  }
+  get soundQualitySwitch(){
+    return this.page.locator('.quality-switch');
+  }
+  get meterKbpsReadout(){
+    return this.page.locator('.meter > .readout');
+  }
+  get nextSongButton(){
+    return this.page.locator('.next-button');
+  }
+  get previousSongButton(){
+    return this.page.locator('.prev-button');
+  }
+  get trackTitle(){
+    return this.page.locator('.track-title');
   }
 
   async goto() {
@@ -65,4 +82,4 @@ exports.PlayerPage = class PlayerPage {
     await expect(this.playerPlayPauseButton).toHaveClass(/pause/);
     await expect(this.playerLeftTimeIndicator).toHaveText(time, { timeout: 10000 });
   }
-};
+}

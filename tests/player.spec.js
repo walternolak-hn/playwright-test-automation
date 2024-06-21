@@ -1,15 +1,13 @@
 // @ts-check
-const { test, expect } = require('@playwright/test');
-const { HomePage } = require('../pageObjects/home.page');
-const { PlayerPage } = require('../pageObjects/player.page');
+import { test, expect } from '@playwright/test';
+import { HomePage } from '../pageObjects/home.page';
+import { PlayerPage } from '../pageObjects/player.page';
 
 test.beforeEach('Land into Homepage', async ({ page }) => {
   const homePage = new HomePage(page);
 
   await homePage.goto();
-  await expect(homePage.nyaNewsWelcomeMessage).toBeVisible();
-  await (homePage.nyaNewsWelcomeNoThanksButton).click();
-  await expect(homePage.nyaNewsWelcomeMessage).not.toBeVisible();
+  await homePage.skipWelcomeMessage();
 });
 
 test('can play a song for 5 seconds', async ({ page }) => {

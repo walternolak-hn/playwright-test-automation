@@ -1,8 +1,8 @@
 // @ts-check
-const { test, expect } = require('@playwright/test');
-const { HomePage } = require('../pageObjects/home.page');
-const { PlayerPage } = require('../pageObjects/player.page');
-const { AlbumPage } = require('../pageObjects/album.page');
+import { test, expect } from '@playwright/test';
+import { HomePage } from '../pageObjects/home.page';
+import { PlayerPage } from '../pageObjects/player.page';
+import { AlbumPage } from '../pageObjects/album.page';
 
 test.beforeEach('Land into the album page', async ({ page }) => {
   const albumPage = new AlbumPage(page);
@@ -10,9 +10,7 @@ test.beforeEach('Land into the album page', async ({ page }) => {
   const playerPage = new PlayerPage(page);
 
   await homePage.goto();
-  await expect(homePage.nyaNewsWelcomeMessage).toBeVisible();
-  await (homePage.nyaNewsWelcomeNoThanksButton).click();
-  await expect(homePage.nyaNewsWelcomeMessage).not.toBeVisible();
+  await homePage.skipWelcomeMessage();
 
   await albumPage.goto();
   await expect(page).toHaveURL(/.*id=A_031/);
