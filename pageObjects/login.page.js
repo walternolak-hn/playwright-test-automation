@@ -1,26 +1,36 @@
-const { expect } = require('@playwright/test');
+import { expect } from '@playwright/test';
 
-exports.LoginPage = class LoginPage {
+export class LoginPage {
 
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
     this.page = page;
-    this.loginLabel = page.getByRole('list').getByText('Log In');
-    this.emailInput = page.getByPlaceholder('Enter Email');
-    this.passwordInput = page.getByPlaceholder('Password');
-    this.loginButton = page.getByLabel('Log In');
-    this.invalidLoginMessage = page.getByText('Wrong email or password.');
+  }
+
+  get loginLabel(){
+    return this.page.getByRole('list').getByText('Log In');
+  }
+  get emailInput(){
+    return this.page.getByPlaceholder('Enter Email');
+  }
+  get passwordInput(){
+    return this.page.getByPlaceholder('Password');
+  }
+  get loginButton(){
+    return this.page.getByLabel('Log In');
+  }
+  get invalidLoginMessage(){
+    return this.page.getByText('Wrong email or password.');
   }
 
   async goto() {
     await this.page.goto('/');
   }
-
   async doLogin(email, password) {
     await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
     await this.loginButton.click();
   }
-};
+}
